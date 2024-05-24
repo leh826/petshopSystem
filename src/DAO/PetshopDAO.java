@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.util.ArrayList;
 
 public class PetshopDAO {
+    /*
     PreparedStatement pstm;
     ResultSet rs; // Resultset é a biblioteca que trás dados do sql
     ArrayList<UEPA_dadosDTO> list = new ArrayList<>();
@@ -126,4 +127,5 @@ public class PetshopDAO {
         return null;
         }
     }
+*/
 }
