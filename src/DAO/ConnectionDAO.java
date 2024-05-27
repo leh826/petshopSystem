@@ -1,18 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package DAO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import java.sql.PreparedStatement;
 
-/**
- *
- * @author Leticia
- */
 public class ConnectionDAO {
 
     private Connection conn = null;
@@ -27,4 +21,46 @@ public class ConnectionDAO {
         }
         return null;
     }
+/**
+  private Connection connect;
+    
+    private final String URLBD = "jdbc:mysql://localhost:3306/java_database"; 
+    
+    private final String user = "iumy";
+    private final String password = "iumy"; 
+
+    // Metodo responsavel por abrir a conexão
+    public ConnectionDAO() {
+        
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver"); 
+            connect = DriverManager.getConnection(URLBD, user, password); 
+            
+            System.out.println("Conectado com sucesso!");
+            
+        }catch (Exception e){
+            e.printStackTrace();
+            
+            JOptionPane.showMessageDialog(null, "Erro de conexão!\nERRO: " + e.getMessage(), "Banco de Dados", JOptionPane.INFORMATION_MESSAGE);
+        
+        }
+    }
+    
+    
+    // Metodo responsavel por fechar a conexão
+    public void desconnectDAO() {
+        try {
+            if (connect != null && !connect.isClosed()) {
+                
+            
+                connect.close(); 
+            
+                System.out.println("Conexão fechada com sucesso!");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            
+            JOptionPane.showMessageDialog(null, "Erro ao fechar a conexão!\nERRO: " + e.getMessage(), "Banco de Dados", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }*/
 }

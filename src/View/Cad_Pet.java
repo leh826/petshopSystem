@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package View;
+import DAO.CadastroPetDAO;
+import Controler.ControlerCadPet;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -671,20 +674,38 @@ public class Cad_Pet extends javax.swing.JFrame {
             
             
             String historico_vacinacao = jTextField6.getText();
-            String medicametos_uso = jTextField7.getText();
+            String medicamentos_uso = jTextField7.getText();
             String alergias = jTextField8.getText();
             String hist_doencas_cond_medicas = jTextField9.getText();
             
             String nomeTutor = jTextField10.getText();
             String contato = jFormattedTextField2.getText();
             String num_cpf = jFormattedTextField3.getText();
-            String Endereco = jTextField11.getText();
+            String endereco = jTextField11.getText();
             
-            //ConnectBD bd = new ConnectBD();
-            //bd.insetCadastrosPet(nomePet, especie, raca, sexo, idade, cor, peso, caracteristicas);
-            //bd.insertInfoSaudePet(historico_vacinacao, medicametos_uso, alergias, hist_doencas_cond_medicas);
-            //bd.insertInfoTutor(nomeTutor, contato, num_cpf, Endereco);
-            //bd.desconnectBD();
+            System.out.println(nomePet);
+            
+            
+            //ControlerCadPet ct = new ControlerCadPet(nomePet, especie, raca, sexo, idade, cor, peso, caracteristicas, historico_vacinacao, medicametos_uso, alergias, hist_doencas_cond_medicas, nomeTutor, contato, num_cpf, endereco);
+            
+            //ct.validaDadosCorretos();
+            
+       
+                CadastroPetDAO bd = new CadastroPetDAO();
+                
+                bd.insetCadastrosPet(nomePet, especie, raca, sexo, idade, cor, peso, caracteristicas, nomeTutor, contato, num_cpf, endereco, historico_vacinacao, medicamentos_uso, alergias, hist_doencas_cond_medicas);
+               
+                /*bd.insetCadastrosPet(nomePet, especie, raca, sexo, idade, cor, peso, caracteristicas);
+               bd.insertInfoSaudePet(historico_vacinacao, medicamentos_uso, alergias, hist_doencas_cond_medicas);
+               bd.insertInfoTutor(nomeTutor, contato, num_cpf, endereco);*/
+
+                bd.desconnectBD();
+                
+            
+            
+            /*
+            
+            */
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

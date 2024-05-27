@@ -4,18 +4,86 @@
  */
 package View;
 
+import static java.lang.Integer.parseInt;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import DAO.CadastroPetDAO;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import Model.ModeloTabelaPets;
+
 /**
  *
  * @author Iumy P.F
  */
 public class Busca_Pet extends javax.swing.JFrame {
-
-    /**
-     * Creates new form Busca_Pet
-     */
+    
+    private JTable tabela1;
+    private DefaultTableModel modeloTabela;
+    private ModeloTabelaPets exibirCadastros;
+    private JScrollPane scrollPane;
+    
     public Busca_Pet() {
         initComponents();
+        
+        
+        criarTabela();
+
+        exibirCadastros = new ModeloTabelaPets();
+        exibirCadastros.setModeloTabela(modeloTabela);
+
+        modeloTabela.addTableModelListener(e -> {
+   
+        });
+
+        atualizarTabela();
     }
+
+    private void criarTabela() {
+
+        tabela1 = new JTable();
+        modeloTabela = new DefaultTableModel();
+
+        modeloTabela.addColumn("COD PET");
+        modeloTabela.addColumn("PET");
+        modeloTabela.addColumn("ESPECIE");
+        modeloTabela.addColumn("RAÇA");
+        modeloTabela.addColumn("SEXO");
+        modeloTabela.addColumn("IDADE");
+        modeloTabela.addColumn("COR");
+        modeloTabela.addColumn("PESO");
+        modeloTabela.addColumn("CARACTERISTICAS");
+        modeloTabela.addColumn("NOME DO TUTOR");
+        modeloTabela.addColumn("CONTATO");
+        modeloTabela.addColumn("CPF DO TUTOR");
+        modeloTabela.addColumn("ENDEREÇO");
+        modeloTabela.addColumn("HISTORICO DE VACINAS");
+        modeloTabela.addColumn("MEDICAMENTOS EM USO");
+        modeloTabela.addColumn("ALERGIAS");
+        modeloTabela.addColumn("HIST. DOENÇAS/COND. MÉDICAS");
+
+        tabela1.setModel(modeloTabela);
+
+        scrollPane = new JScrollPane(tabela1);
+
+        setLayout(null);
+
+        scrollPane.setBounds(50, 100, 900, 400);
+
+        add(scrollPane);
+
+        
+    }
+
+    private void atualizarTabela() {
+        
+        modeloTabela.setRowCount(0);
+
+        for (ModeloTabelaPets cad : ModeloTabelaPets.listaCadastros) {
+            exibirCadastros.adicionarCads(cad);
+        }
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,10 +97,9 @@ public class Busca_Pet extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        canvas1 = new java.awt.Canvas();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Buscar Pet");
@@ -47,53 +114,36 @@ public class Busca_Pet extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Id", "Nome", "Idade", "Cor", "Peso", "Tutor", "Contato"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(jTable1);
-
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton2.setText("Alterar");
 
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton3.setText("Excluir");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGap(143, 143, 143)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(58, 58, 58)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 829, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,9 +156,9 @@ public class Busca_Pet extends javax.swing.JFrame {
                         .addComponent(jButton1)
                         .addComponent(jButton2)
                         .addComponent(jButton3)))
-                .addGap(56, 56, 56)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(122, Short.MAX_VALUE))
+                .addGap(332, 332, 332)
+                .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(105, Short.MAX_VALUE))
         );
 
         pack();
@@ -119,6 +169,33 @@ public class Busca_Pet extends javax.swing.JFrame {
         dispose();
         new Opc_Cadastros().setVisible(true);
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        
+        /*
+        int index = tabela.getSelectedRow();
+        System.out.print(index);
+        String id = (String) tabela.getValueAt​(index, 0);
+        System.out.print(id);
+        
+        CadastroPetDAO bd = new CadastroPetDAO();
+
+        if (index != -1) {
+            
+            bd.deleteCadastros(parseInt(id)); //pois inica-se de 0 no java
+            
+            ((DefaultTableModel) tabela.getModel()).removeRow(index);
+            Cadastros.listaCadastros.remove(index);
+
+        } else {
+            
+            JOptionPane.showMessageDialog(this, "Nenhuma linha selecionada", "Aviso", JOptionPane.WARNING_MESSAGE);
+            
+        }
+        
+        bd.desconnectBD();*/
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,12 +233,11 @@ public class Busca_Pet extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private java.awt.Canvas canvas1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
