@@ -4,6 +4,9 @@
  */
 package View;
 
+import javax.swing.JOptionPane;
+import DAO.CadastroPetDAO;
+
 /**
  *
  * @author Iumy P.F
@@ -54,6 +57,11 @@ public class Opc_Cadastros extends javax.swing.JFrame {
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -177,6 +185,20 @@ public class Opc_Cadastros extends javax.swing.JFrame {
         // TODO add your handling code here:
         new Busca_Pet().setVisible(true);
     }//GEN-LAST:event_jButton4MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        CadastroPetDAO bd = new CadastroPetDAO();
+
+        bd.selectCadastros();
+        
+        new Busca_Pet().setVisible(true);
+        
+        dispose();
+        
+        bd.desconnectBD();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
