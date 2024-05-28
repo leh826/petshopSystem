@@ -14,11 +14,14 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import java.awt.Desktop;
+
 public class CaixaView extends javax.swing.JFrame {
 
     public CaixaView() {
         initComponents();
     }
+
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -137,13 +140,7 @@ public class CaixaView extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {                                           
-
-    private void cbmStatusPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbmStatusPedidoActionPerformed
-
-    }//GEN-LAST:event_cbmStatusPedidoActionPerformed
+    }// </editor-fold>//GEN-END:initComponentsgit
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
         imprimir("C:\\Users\\Leticia\\OneDrive\\Documentos\\Constraints_letícia souza.docx");
