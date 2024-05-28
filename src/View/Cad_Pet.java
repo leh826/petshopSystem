@@ -690,7 +690,6 @@ public class Cad_Pet extends javax.swing.JFrame {
             
             //ct.validaDadosCorretos();
             
-       
                 CadastroPetDAO bd = new CadastroPetDAO();
                 
                 bd.insetCadastrosPet(nomePet, especie, raca, sexo, idade, cor, peso, caracteristicas, nomeTutor, contato, num_cpf, endereco, historico_vacinacao, medicamentos_uso, alergias, hist_doencas_cond_medicas);
