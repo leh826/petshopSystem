@@ -1,30 +1,40 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package DAO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
 
-/**
- *
- * @author Leticia
- */
 public class ConnectionDAO {
 
-    private Connection conn = null;
-    private String url = "jdbc:mysql://localhost:3306/uepa_alunos?user=root&password=root";
-
-    public Connection connectionBD() {
+    private Connection conexao;
+    private final String URLDB = "jdbc:mysql://localhost:3306/petshop?";
+    private final String usuario = "root";
+    private final String senha = "root";
+    
+    public ConnectionDAO() throws SQLException{
+        
         try {
-            conn = DriverManager.getConnection(url);// ,user,password);
-            return conn;
-        } catch (SQLException erro) {
-            JOptionPane.showMessageDialog(null, "don't conected to database\n ERRO:" + erro.getMessage());
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            conexao = DriverManager.getConnection(URLDB, usuario, senha);
+        } catch (ClassNotFoundException ex){
+            System.out.println("Driver não localizado");
+        } catch (SQLException ex){
+            System.out.println("Erro ao acessar o banco" + ex.getMessage());
+        } 
+    }
+    
+    public Connection getConnection() {
+        return conexao;
+    }
+
+    public void desconectar() {
+        if (conexao != null) {
+            try {
+                conexao.close();
+                System.out.println("Conexão encerrada.");
+            } catch (SQLException e) {
+                System.err.println("Erro ao fechar a conexão: " + e.getMessage());
+            }
         }
-        return null;
     }
 }
