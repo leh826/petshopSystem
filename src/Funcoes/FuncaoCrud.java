@@ -1,6 +1,6 @@
 package Funcoes;
 
-import DAO.ConnectionDAO;
+import DAO.ConnectionPetDAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,15 +9,15 @@ import java.util.ArrayList;
 
 public class FuncaoCrud {
 
-    private final ConnectionDAO conexaoDAO;
+    private final ConnectionPetDAO ConnectionPetDAO;
 
     public FuncaoCrud() throws SQLException {
-        this.conexaoDAO = new ConnectionDAO();
+        this.ConnectionPetDAO = new ConnectionPetDAO();
     }
 
     public boolean inserirProduto(int codigoBarras, String referencia, int codigo, String unidade, double valorCompra, double valorVenda, int quantidade, String categoria, String tipo, String marca, String validade, String localizacao, String fornecedor, String dataEntrada) {
         String sql = "INSERT INTO sua_tabela (codigo_barras, referencia, codigo, unidade, valor_compra, valor_venda, quantidade, categoria, tipo, marca, validade, localizacao, fornecedor, data_entrada) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        try (Connection conexao = conexaoDAO.getConnection();
+        try (Connection conexao = ConnectionPetDAO.getConnection();
              PreparedStatement psInsert = conexao.prepareStatement(sql)) {
             psInsert.setInt(1, codigoBarras);
             psInsert.setString(2, referencia);
@@ -42,7 +42,7 @@ public class FuncaoCrud {
 
     public boolean alterarProduto(String campo, String valor, int codigo) {
         String sql = "UPDATE sua_tabela SET " + campo + " = ? WHERE codigo = ?";
-        try (Connection conexao = conexaoDAO.getConnection();
+        try (Connection conexao = ConnectionPetDAO.getConnection();
              PreparedStatement psUpdate = conexao.prepareStatement(sql)) {
             psUpdate.setString(1, valor);
             psUpdate.setInt(2, codigo);
@@ -56,7 +56,7 @@ public class FuncaoCrud {
     public boolean removerProduto(int codigo) {
         System.out.println("O produto a ser removido tem esse código: " + codigo); // Imprime o codigo antes da exclusão
         String sql = "DELETE FROM sua_tabela WHERE codigo=?";
-        try (Connection conexao = conexaoDAO.getConnection();
+        try (Connection conexao = ConnectionPetDAO.getConnection();
              PreparedStatement psDelete = conexao.prepareStatement(sql)) {
             psDelete.setInt(1, codigo);
             return psDelete.executeUpdate() > 0;
@@ -70,7 +70,7 @@ public class FuncaoCrud {
     public ArrayList<String> getDados() {
         ArrayList<String> dados = new ArrayList<>();
         String sql = "SELECT * FROM sua_tabela";
-        try (Connection conexao = conexaoDAO.getConnection();
+        try (Connection conexao = ConnectionPetDAO.getConnection();
              PreparedStatement ps = conexao.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {

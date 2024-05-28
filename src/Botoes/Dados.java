@@ -1,6 +1,6 @@
 package Botoes;
 
-import DAO.ConnectionDAO;
+import DAO.ConnectionPetDAO;
 import Funcoes.FuncaoCrud;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -13,9 +13,9 @@ public class Dados {
         public ArrayList<String> getRegistros() {
         ArrayList<String> registros = new ArrayList<>();
         
-        ConnectionDAO conexao = null;
+        ConnectionPetDAO conexao = null;
         try {
-            conexao = new ConnectionDAO();
+            conexao = new ConnectionPetDAO();
             FuncaoCrud crud = new FuncaoCrud();
             registros = crud.getDados();
         } catch (SQLException ex) {
