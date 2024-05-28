@@ -1,6 +1,6 @@
-package Telas;
+package View;
 
-import Botoes.BotaoProdutos;
+import Controler.ControlerProdutos;
 import Filtros.FiltroPesquisaProdutos;
 
 /**
@@ -411,7 +411,7 @@ public class TelaCadastro extends javax.swing.JFrame {
     String fornecedor = jTextField11.getText();
     String dataEntrada = jTextField5.getText();
 
-    BotaoProdutos botoes = new BotaoProdutos();
+    ControlerProdutos botoes = new ControlerProdutos();
     botoes.btnInserir(codigoBarras, referencia, codigo, unidade, valorCompra, valorVenda, quantidade, categoria, tipo, marca, validade, localizacao, fornecedor, dataEntrada);
     }//GEN-LAST:event_jButton1ActionPerformed
 

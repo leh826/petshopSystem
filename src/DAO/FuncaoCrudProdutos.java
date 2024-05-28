@@ -1,4 +1,4 @@
-package Funcoes;
+package DAO;
 
 import DAO.ConnectionPetDAO;
 import java.sql.Connection;
@@ -7,11 +7,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class FuncaoCrud {
+public class FuncaoCrudProdutos {
 
     private final ConnectionPetDAO ConnectionPetDAO;
 
-    public FuncaoCrud() throws SQLException {
+    public FuncaoCrudProdutos() throws SQLException {
         this.ConnectionPetDAO = new ConnectionPetDAO();
     }
 

@@ -116,8 +116,9 @@ public class CaixaView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) { 
+        
+    }                                          
     private void cbmStatusPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbmStatusPedidoActionPerformed
 
         // TODO add your handling code here:
