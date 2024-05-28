@@ -2,7 +2,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 package View;
 
 import com.itextpdf.text.Document;
@@ -16,7 +15,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class CaixaView extends javax.swing.JFrame {
-
 
     public CaixaView() {
         initComponents();
@@ -58,6 +56,11 @@ public class CaixaView extends javax.swing.JFrame {
         caixa.add(lblCaixa, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 50, -1));
 
         cbmStatusPedido.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "fechado", "em andamento" }));
+        cbmStatusPedido.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbmStatusPedidoItemStateChanged(evt);
+            }
+        });
         cbmStatusPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbmStatusPedidoActionPerformed(evt);
@@ -136,11 +139,10 @@ public class CaixaView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {                                           
 
     private void cbmStatusPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbmStatusPedidoActionPerformed
 
-        // TODO add your handling code here:
     }//GEN-LAST:event_cbmStatusPedidoActionPerformed
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
@@ -150,18 +152,22 @@ public class CaixaView extends javax.swing.JFrame {
     private void fmtxtHoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fmtxtHoraActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_fmtxtHoraActionPerformed
-    public void imprimir(String caminhoArquivo){
+
+    private void cbmStatusPedidoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbmStatusPedidoItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbmStatusPedidoItemStateChanged
+    public void imprimir(String caminhoArquivo) {
         Desktop desktop = Desktop.getDesktop();
-        
+
         try {
-           File arquivoImprimir = new File (caminhoArquivo);
-           desktop.print(arquivoImprimir);
+            File arquivoImprimir = new File(caminhoArquivo);
+            desktop.print(arquivoImprimir);
         } catch (IOException e) {
             e.printStackTrace();
         }
-  
+
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -196,23 +202,23 @@ public class CaixaView extends javax.swing.JFrame {
             }
         });
         Document documentoPDF = new Document();
-        
+
         try {
             //cria uma instancia do documento e da nome do pdf
-            PdfWriter.getInstance(documentoPDF, new FileOutputStream ("C:\\PDF_teste1.0.pdf"));
+            PdfWriter.getInstance(documentoPDF, new FileOutputStream("C:\\PDF_teste1.0.pdf"));
             //abrir documento pdf
             documentoPDF.open();
-            
+
             //setar o tamanho da página
             documentoPDF.setPageSize(PageSize.A4);
-            
+
             //adicionando primeiro paragrafo
             documentoPDF.add(new Paragraph("GERANDO PDF COM PROGRAMINHA JAVA"));
         } catch (DocumentException de) {
             de.printStackTrace();
-        }catch(IOException ioe){
-           ioe.printStackTrace();
-        }finally{
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        } finally {
             documentoPDF.close();
         }
     }
