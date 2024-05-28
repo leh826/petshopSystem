@@ -1,6 +1,6 @@
 
 package DAO;
-import DAO.ConnectionDAO;
+import DAO.ConnectionPetDAO;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -15,6 +15,7 @@ import Model.ModeloTabelaPets;
 public class CadastroPetDAO {
     
     private Connection connect;
+    
     
     private final String URLBD = "jdbc:mysql://localhost:3306/petshop"; 
     
