@@ -6,7 +6,7 @@ package View;
 
 import javax.swing.JOptionPane;
 import DAO.CadastroPetDAO;
-import view.TelaOrçamento;
+import View.TelaOrçamento;
 /**
  *
  * @author Iumy P.F
