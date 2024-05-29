@@ -497,7 +497,8 @@ public class TelaOrçamento extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaOrçamento().setVisible(true);
+                //new TelaOrçamento().setVisible(true);
+                new Opc_Cadastros().setVisible(true);
             }
         });
     }

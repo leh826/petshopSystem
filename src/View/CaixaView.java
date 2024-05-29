@@ -6,6 +6,7 @@ package View;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
@@ -21,7 +22,6 @@ public class CaixaView extends javax.swing.JFrame {
     public CaixaView() {
         initComponents();
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
@@ -46,7 +46,7 @@ public class CaixaView extends javax.swing.JFrame {
         txtNumeroPedido = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Item 1", "Item 2", "Item 3", "Item 4"}));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,7 +58,7 @@ public class CaixaView extends javax.swing.JFrame {
         lblCaixa.setText("CAIXA");
         caixa.add(lblCaixa, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 50, -1));
 
-        cbmStatusPedido.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "fechado", "em andamento" }));
+        cbmStatusPedido.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"fechado", "em andamento"}));
         cbmStatusPedido.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cbmStatusPedidoItemStateChanged(evt);
@@ -131,12 +131,12 @@ public class CaixaView extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(caixa, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(caixa, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(caixa, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(caixa, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -162,7 +162,38 @@ public class CaixaView extends javax.swing.JFrame {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        Document documentoPDF = new Document();
 
+        try {
+            //cria uma instancia do documento e da nome do pdf
+            PdfWriter.getInstance(documentoPDF, new FileOutputStream("C:\\Users\\Leticia\\OneDrive\\Documentos"));
+            //abrir documento pdf
+            documentoPDF.open();
+
+            //setar o tamanho da página
+            documentoPDF.setPageSize(PageSize.A4);
+
+            //adicionando primeiro paragrafo
+            documentoPDF.add(new Paragraph("GERANDO PDF COM PROGRAMINHA JAVA"));
+            
+            //nova pagina
+            documentoPDF.newPage();
+            
+            documentoPDF.add(new Paragraph ("Paragrafo de teste segunda pagina"));
+            
+            //imagem do relatorio
+            Image imagem = Image.getInstance("C:\\Users\\Leticia\\OneDrive\\Imagens\\Saved\\profile-pic (4).png");
+            
+            //setando tamanh
+            imagem.scaleToFit(400,200);
+            
+        } catch (DocumentException de) {
+            de.printStackTrace();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        } finally {
+            documentoPDF.close();
+        }
     }
 
     /**
@@ -198,26 +229,6 @@ public class CaixaView extends javax.swing.JFrame {
                 new CaixaView().setVisible(true);
             }
         });
-        Document documentoPDF = new Document();
-
-        try {
-            //cria uma instancia do documento e da nome do pdf
-            PdfWriter.getInstance(documentoPDF, new FileOutputStream("C:\\PDF_teste1.0.pdf"));
-            //abrir documento pdf
-            documentoPDF.open();
-
-            //setar o tamanho da página
-            documentoPDF.setPageSize(PageSize.A4);
-
-            //adicionando primeiro paragrafo
-            documentoPDF.add(new Paragraph("GERANDO PDF COM PROGRAMINHA JAVA"));
-        } catch (DocumentException de) {
-            de.printStackTrace();
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        } finally {
-            documentoPDF.close();
-        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

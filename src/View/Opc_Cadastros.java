@@ -6,6 +6,7 @@ package View;
 
 import javax.swing.JOptionPane;
 import DAO.CadastroPetDAO;
+import Telas.TelaProdutos;
 import View.TelaOrçamento;
 /**
  *
@@ -178,15 +179,13 @@ public class Opc_Cadastros extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-        // TODO add your handling code here:
-        dispose();
+
         new TelaOrçamento().setVisible(true);
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
-        // TODO add your handling code here:
-        dispose();
-        new TelaOrçamento().setVisible(true);
+       
+        new TelaProdutos().setVisible(true);
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
