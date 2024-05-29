@@ -508,8 +508,8 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jButton7" max="32767" attributes="0"/>
-                              <Component id="jButton6" max="32767" attributes="0"/>
+                              <Component id="btnFinalizarPedido" max="32767" attributes="0"/>
+                              <Component id="btnSairPedido" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
                       </Group>
@@ -531,12 +531,12 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jButton8" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                      <Component id="jButton7" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="btnFinalizarPedido" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jButton5" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                      <Component id="jButton6" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="btnSairPedido" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -567,15 +567,21 @@
             <Property name="text" type="java.lang.String" value="SALVAR PEDIDO"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton6">
+        <Component class="javax.swing.JButton" name="btnSairPedido">
           <Properties>
             <Property name="text" type="java.lang.String" value="SAIR PEDIDO"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnSairPedidoMouseClicked"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton7">
+        <Component class="javax.swing.JButton" name="btnFinalizarPedido">
           <Properties>
             <Property name="text" type="java.lang.String" value="Finalizar Pedido"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnFinalizarPedidoMouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton8">
           <Properties>
