@@ -3,11 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Eduardo/Downloads/petshopSystem/src/View/TelaCadastro.java</file>
             <file>file:/C:/Users/Eduardo/Downloads/petshopSystem/src/View/TelaProdutos.java</file>
             <file>file:/C:/Users/Eduardo/Downloads/petshopSystem/src/DAO/FuncaoCrudProdutos.java</file>
             <file>file:/C:/Users/Eduardo/Downloads/petshopSystem/src/Model/ModeloTabelaProdutos.java</file>
             <file>file:/C:/Users/Eduardo/Downloads/petshopSystem/src/Controler/ControlerProdutos.java</file>
+=======
+            <file>file:/C:/Users/Leticia/OneDrive/Documentos/Projects/petshopSystem/src/DAO/CadastroPetDAO.java</file>
+            <file>file:/C:/Users/Leticia/OneDrive/Documentos/Projects/petshopSystem/src/DAO/ConnectionPetDAO.java</file>
+            <file>file:/C:/Users/Leticia/OneDrive/Documentos/Projects/petshopSystem/src/View/TelaOrçamento.java</file>
+            <file>file:/C:/Users/Leticia/OneDrive/Documentos/Projects/petshopSystem/src/View/Opc_Cadastros.java</file>
+            <file>file:/C:/Users/Leticia/OneDrive/Documentos/Projects/petshopSystem/src/View/CaixaView.java</file>
+>>>>>>> a2013f15cdca4dd209e2d843dd41fceee343158f
         </group>
     </open-files>
 </project-private>
