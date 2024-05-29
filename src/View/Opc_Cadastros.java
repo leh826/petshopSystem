@@ -4,8 +4,6 @@ import DAO.CadastroPetDAO;
 import DAO.ConnectionPetDAO;
 import View.Busca_Pet;
 import View.TelaProdutos;
-import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -203,17 +201,8 @@ public class Opc_Cadastros extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
-        TelaProdutos frame = new TelaProdutos();
-
-    // Definir a posição central da janela
-    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    int x = (int) ((screenSize.getWidth() - frame.getWidth()) / 2);
-    int y = (int) ((screenSize.getHeight() - frame.getHeight()) / 2);
-    frame.setLocation(x, y);
-
-    frame.setVisible(true);
-    frame.pack(); // Redimensiona o JFrame para ajustar os componentes
-    dispose();
+        new TelaProdutos().setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton4MouseClicked
                                  
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
