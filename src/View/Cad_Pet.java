@@ -82,6 +82,7 @@ public class Cad_Pet extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel23 = new javax.swing.JLabel();
 
         jCheckBoxMenuItem1.setSelected(true);
         jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
@@ -576,14 +577,13 @@ public class Cad_Pet extends javax.swing.JFrame {
             }
         });
 
+        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/barra-logo-5.png"))); // NOI18N
+        jLabel23.setText("jLabel23");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(397, 397, 397))
             .addGroup(layout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 723, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -592,6 +592,11 @@ public class Cad_Pet extends javax.swing.JFrame {
                     .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(64, 64, 64))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(397, 397, 397))
+            .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -605,7 +610,8 @@ public class Cad_Pet extends javax.swing.JFrame {
                         .addComponent(jButton1)
                         .addGap(18, 18, 18)
                         .addComponent(jButton2)))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(jLabel23))
         );
 
         pack();
@@ -681,34 +687,15 @@ public class Cad_Pet extends javax.swing.JFrame {
             String endereco = jTextField11.getText();
             
             System.out.println(nomePet);
-            
-            
-            //ControlerCadPet ct = new ControlerCadPet(nomePet, especie, raca, sexo, idade, cor, peso, caracteristicas, historico_vacinacao, medicametos_uso, alergias, hist_doencas_cond_medicas, nomeTutor, contato, num_cpf, endereco);
-            
-            //ct.validaDadosCorretos();
-            
+               
                 CadastroPetDAO bd;
             try {
                 bd = new CadastroPetDAO();
                 bd.insetCadastrosPet(nomePet, especie, raca, sexo, idade, cor, peso, caracteristicas, nomeTutor, contato, num_cpf, endereco, historico_vacinacao, medicamentos_uso, alergias, hist_doencas_cond_medicas);
                
-            } catch (SQLException ex) {
-                Logger.getLogger(Cad_Pet.class.getName()).log(Level.SEVERE, null, ex);
-            }
-                
-                //bd.insetCadastrosPet(nomePet, especie, raca, sexo, idade, cor, peso, caracteristicas, nomeTutor, contato, num_cpf, endereco, historico_vacinacao, medicamentos_uso, alergias, hist_doencas_cond_medicas);
-               
-                /*bd.insetCadastrosPet(nomePet, especie, raca, sexo, idade, cor, peso, caracteristicas);
-               bd.insertInfoSaudePet(historico_vacinacao, medicamentos_uso, alergias, hist_doencas_cond_medicas);
-               bd.insertInfoTutor(nomeTutor, contato, num_cpf, endereco);*/
-
-                //bd.desconnectBD();
-                
-            
-            
-            /*
-            
-            */
+            } catch (Exception e) {
+                Logger.getLogger(Cad_Pet.class.getName()).log(Level.SEVERE, null, e);
+            }        
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -820,6 +807,7 @@ public class Cad_Pet extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
