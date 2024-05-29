@@ -1,6 +1,7 @@
-package Telas;
+package View;
 
-import Botoes.BotaoProdutos;
+import View.TelaCadastro;
+import Controler.ControlerProdutos;
 import CustomTableCellRenderer.CustomTableCellRenderer;
 import Filtros.FiltroCategoriaGrupo;
 import Filtros.FiltroGeral;
@@ -307,12 +308,12 @@ public class TelaProdutos extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
-        BotaoProdutos bt = new BotaoProdutos();
+        ControlerProdutos bt = new ControlerProdutos();
         bt.btnAlterarDados(jTable1);
     }//GEN-LAST:event_jToggleButton3ActionPerformed
 
     private void jToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton4ActionPerformed
-        BotaoProdutos bt = new BotaoProdutos();
+        ControlerProdutos bt = new ControlerProdutos();
         bt.btnDeletar(jTable1);
     }//GEN-LAST:event_jToggleButton4ActionPerformed
 

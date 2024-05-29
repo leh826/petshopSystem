@@ -1,6 +1,7 @@
-package Botoes;
+package Controler;
 
-import Funcoes.FuncaoCrud;
+import Model.ModeloTabelaProdutos;
+import DAO.FuncaoCrudProdutos;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -8,7 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-public class BotaoProdutos {
+public class ControlerProdutos {
 
     public void btnDeletar(JTable jTable1) {
         int index = jTable1.getSelectedRow();
@@ -43,7 +44,7 @@ public class BotaoProdutos {
 
     private void deletarProduto(int codigo, DefaultTableModel model, int index) {
         try {
-            FuncaoCrud fun = new FuncaoCrud();
+            FuncaoCrudProdutos fun = new FuncaoCrudProdutos();
             if (fun.removerProduto(codigo)) {
                 model.removeRow(index);
                 JOptionPane.showMessageDialog(null, "Removido com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
@@ -51,7 +52,7 @@ public class BotaoProdutos {
                 JOptionPane.showMessageDialog(null, "Erro ao remover produto.", "Erro", JOptionPane.ERROR_MESSAGE);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(BotaoProdutos.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ControlerProdutos.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -64,7 +65,7 @@ public class BotaoProdutos {
             double valorCompraDouble = Double.parseDouble(valorCompra);
             double valorVendaDouble = Double.parseDouble(valorVenda);
             
-            FuncaoCrud fun = new FuncaoCrud();
+            FuncaoCrudProdutos fun = new FuncaoCrudProdutos();
             if (fun.inserirProduto(codigoBarrasInt, referencia, codigoInt, unidade, valorCompraDouble, valorVendaDouble, quantidadeInt, categoria, tipo, marca, validade, localizacao, fornecedor, dataEntrada)) {
                 JOptionPane.showMessageDialog(null, "Produto inserido com sucesso!");
             } else {
@@ -73,7 +74,7 @@ public class BotaoProdutos {
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao converter valores. Verifique se os campos foram preenchidos corretamente.", "Erro", JOptionPane.ERROR_MESSAGE);
         } catch (SQLException ex) {
-            Logger.getLogger(BotaoProdutos.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ControlerProdutos.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "Erro ao criar conexão com o banco de dados.", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
@@ -108,7 +109,7 @@ public class BotaoProdutos {
 
                             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
                             model.setRowCount(0);
-                            Dados dados = new Dados();
+                            ModeloTabelaProdutos dados = new ModeloTabelaProdutos();
                             dados.preencherTabela(jTable1);
                         }
                     } else {
@@ -127,7 +128,7 @@ public class BotaoProdutos {
     
     private void btnAlterar(String campo, String novoValor, int codigo) {
         try {
-            FuncaoCrud fun = new FuncaoCrud();
+            FuncaoCrudProdutos fun = new FuncaoCrudProdutos();
             if (fun.alterarProduto(campo, novoValor, codigo)) {
                 System.out.println("Operação bem-sucedida! Informação alterada.");
             } else {

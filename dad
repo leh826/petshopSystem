@@ -1,0 +1,32 @@
+*   [33m4d2acac[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mtrikk[m[33m, [m[1;31morigin/trikk[m[33m)[m Minha parte
+[31m|[m[32m\[m  
+[31m|[m *   [33m85ae6a6[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Merge pull request #7 from leh826/leh826
+[31m|[m [33m|[m[34m\[m  
+[31m|[m [33m|[m * [33mef941b8[m importado biblioteca para impressão
+[31m|[m [33m|[m[33m/[m  
+[31m|[m *   [33me58c446[m Merge pull request #6 from leh826/iuky
+[31m|[m [35m|[m[36m\[m  
+[31m|[m [35m|[m * [33m0a01753[m Foi feito a conexão com o banco de dados, e a tela pra exibir os cadaatos, essa exibição vem do modelo da tabela
+[31m|[m * [36m|[m   [33mb4223fc[m Merge pull request #5 from leh826/leh826
+[31m|[m [1;31m|[m[1;32m\[m [36m\[m  
+[31m|[m [1;31m|[m * [36m|[m [33m41027e2[m adicionado caixa, icons, alterações até agora
+[31m|[m [1;31m|[m[1;31m/[m [36m/[m  
+[31m|[m * [36m|[m   [33m3db1316[m Merge pull request #4 from leh826/Gabriel
+[31m|[m [1;33m|[m[1;34m\[m [36m\[m  
+[31m|[m [1;33m|[m * [36m|[m [33mea4b89c[m adicionado a tela Orçamento
+[31m|[m [1;33m|[m[1;33m/[m [36m/[m  
+[31m|[m * [36m|[m   [33mb5489cd[m Merge pull request #3 from leh826/Gabriel
+[31m|[m [1;35m|[m[1;36m\[m [36m\[m  
+[31m|[m [1;35m|[m * [36m|[m [33maa0c884[m Adição da tela orçamento
+[31m|[m [1;35m|[m[1;35m/[m [36m/[m  
+[31m|[m * [36m|[m [33m10df205[m Merge pull request #2 from leh826/iuky
+[31m|[m [31m|[m[36m\[m[36m|[m 
+[31m|[m [31m|[m * [33me6be825[m Fiz a tela e estou trabalhando na conexão do BD
+[31m|[m * [32m|[m [33m0ee1b64[m Merge pull request #1 from leh826/iuky
+[31m|[m [33m|[m[32m\[m[32m|[m 
+[31m|[m [33m|[m * [33m037b1ed[m Foi feito o pacote View
+[31m|[m [33m|[m[33m/[m  
+* [33m/[m [33m698d0da[m Minhas telas
+[33m|[m[33m/[m  
+* [33m9b0cb85[m[33m ([m[1;32mmain[m[33m)[m upload
+* [33mcae03f3[m Initial commit

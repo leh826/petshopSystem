@@ -135,6 +135,74 @@ public class ModeloTabelaPets {
     public String getEndereco() {
         return endereco;
     }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setNomePet(String nomePet) {
+        this.nomePet = nomePet;
+    }
+
+    public void setEspecie(String especie) {
+        this.especie = especie;
+    }
+
+    public void setRaca(String raca) {
+        this.raca = raca;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+
+    public void setIdade(String idade) {
+        this.idade = idade;
+    }
+
+    public void setCor(String cor) {
+        this.cor = cor;
+    }
+
+    public void setPeso(String peso) {
+        this.peso = peso;
+    }
+
+    public void setCaracteristicas(String caracteristicas) {
+        this.caracteristicas = caracteristicas;
+    }
+
+    public void setHistorico_vacinacao(String historico_vacinacao) {
+        this.historico_vacinacao = historico_vacinacao;
+    }
+
+    public void setMedicamentos_uso(String medicamentos_uso) {
+        this.medicamentos_uso = medicamentos_uso;
+    }
+
+    public void setAlergias(String alergias) {
+        this.alergias = alergias;
+    }
+
+    public void setHist_doencas_cond_medicas(String hist_doencas_cond_medicas) {
+        this.hist_doencas_cond_medicas = hist_doencas_cond_medicas;
+    }
+
+    public void setNomeTutor(String nomeTutor) {
+        this.nomeTutor = nomeTutor;
+    }
+
+    public void setContato(String contato) {
+        this.contato = contato;
+    }
+
+    public void setNum_cpf(String num_cpf) {
+        this.num_cpf = num_cpf;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
     
     public void setModeloTabela(DefaultTableModel modeloTabela) {
         

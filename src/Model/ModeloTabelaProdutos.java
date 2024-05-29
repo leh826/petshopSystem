@@ -1,7 +1,7 @@
-package Botoes;
+package Model;
 
 import DAO.ConnectionPetDAO;
-import Funcoes.FuncaoCrud;
+import DAO.FuncaoCrudProdutos;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -9,17 +9,17 @@ import java.util.logging.Logger;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-public class Dados {
+public class ModeloTabelaProdutos {
         public ArrayList<String> getRegistros() {
         ArrayList<String> registros = new ArrayList<>();
         
         ConnectionPetDAO conexao = null;
         try {
             conexao = new ConnectionPetDAO();
-            FuncaoCrud crud = new FuncaoCrud();
+            FuncaoCrudProdutos crud = new FuncaoCrudProdutos();
             registros = crud.getDados();
         } catch (SQLException ex) {
-            Logger.getLogger(Dados.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModeloTabelaProdutos.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return registros;
@@ -30,7 +30,7 @@ public class Dados {
         DefaultTableModel model = new DefaultTableModel(
             new Object [][] {},
             new String [] {
-                "ID", "NOME", "ENDERECO", "CPF", "TELEFONE", "CURSO", "SANGUE", "FATOR RH"
+                "Código de Barras", "Referência", "Código", "Uni", "Valor Compra", "Valor de Venda", "Quantidade", "Grupo/Categoria", "Tipo", "Marca do Produto", "Validade", "Localização", "Fornecedor", "Data de Entrada"
             }
         );
 

@@ -8,9 +8,14 @@ import static java.lang.Integer.parseInt;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import DAO.CadastroPetDAO;
+import Filtros.FiltroPets;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import Model.ModeloTabelaPets;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -83,6 +88,15 @@ public class Busca_Pet extends javax.swing.JFrame {
             exibirCadastros.adicionarCads(cad);
         }
     }
+    
+    private void atualizarTabela2(List<ModeloTabelaPets> resultados) {
+        DefaultTableModel model = (DefaultTableModel) tabela1.getModel();
+        modeloTabela.setRowCount(0);
+
+        for (ModeloTabelaPets cad : ModeloTabelaPets.listaCadastros) {
+            exibirCadastros.adicionarCads(cad);
+        }
+    }
 
 
     /**
@@ -100,9 +114,17 @@ public class Busca_Pet extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         canvas1 = new java.awt.Canvas();
+        jLabel1 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Buscar Pet");
+
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/pesquisa-de-lupa.png"))); // NOI18N
 
@@ -116,6 +138,11 @@ public class Busca_Pet extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton2.setText("Alterar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton3.setText("Excluir");
@@ -125,40 +152,61 @@ public class Busca_Pet extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setText("Buscar por:");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pesquisar Todos", "Nome", "Características", "Tutor", "Endereço", " " }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(143, 143, 143)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 749, Short.MAX_VALUE)
+                        .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(58, 58, 58)
+                        .addGap(32, 32, 32)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton1)
-                        .addComponent(jButton2)
-                        .addComponent(jButton3)))
+                .addGap(15, 15, 15)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1)
+                            .addComponent(jButton2)
+                            .addComponent(jButton3))
+                        .addComponent(jLabel3))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(332, 332, 332)
                 .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(105, Short.MAX_VALUE))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
 
         pack();
@@ -173,29 +221,245 @@ public class Busca_Pet extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         
-        /*
-        int index = tabela.getSelectedRow();
+        
+        int index = tabela1.getSelectedRow();
         System.out.print(index);
-        String id = (String) tabela.getValueAt​(index, 0);
+        String id = (String) tabela1.getValueAt​(index, 0);
         System.out.print(id);
         
-        CadastroPetDAO bd = new CadastroPetDAO();
+        CadastroPetDAO bd;
+        try {
+            bd = new CadastroPetDAO();
+            if (index != -1) {
+            
+            bd.deleteCadastros(parseInt(id)); 
+            
+            ((DefaultTableModel) tabela1.getModel()).removeRow(index);
+            ModeloTabelaPets.listaCadastros.remove(index);
 
-        if (index != -1) {
-            
-            bd.deleteCadastros(parseInt(id)); //pois inica-se de 0 no java
-            
-            ((DefaultTableModel) tabela.getModel()).removeRow(index);
-            Cadastros.listaCadastros.remove(index);
+            } else {
 
-        } else {
+                JOptionPane.showMessageDialog(this, "Nenhuma linha selecionada", "Aviso", JOptionPane.WARNING_MESSAGE);
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Busca_Pet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+   
+        //bd.desconnectBD();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        
+        int index = tabela1.getSelectedRow();
+        System.out.print(index);
+        String campo = null;
+        String valor = null;
+        
+        
+        String id = (String) tabela1.getValueAt​(index, 0);
+        String nomePet = (String) tabela1.getValueAt​(index, 1);
+        String especie = (String) tabela1.getValueAt​(index, 2);
+        String raca = (String) tabela1.getValueAt​(index, 3);
+        String sexo = (String) tabela1.getValueAt​(index, 4);
+        String idade = (String) tabela1.getValueAt​(index, 5);
+        String cor = (String) tabela1.getValueAt​(index, 6);
+        String peso = (String) tabela1.getValueAt​(index, 7);
+        String caracteristicas = (String) tabela1.getValueAt​(index, 8);
+        String nomeTutor = (String) tabela1.getValueAt​(index, 9);
+        String contato = (String) tabela1.getValueAt​(index, 10);
+        String num_cpf = (String) tabela1.getValueAt​(index, 11);
+        String endereco = (String) tabela1.getValueAt​(index, 12);
+        String historico_vacinacao = (String) tabela1.getValueAt​(index, 13);
+        String medicamentos_uso = (String) tabela1.getValueAt​(index, 14);
+        String alergias = (String) tabela1.getValueAt​(index, 15);
+        String hist_doencas_cond_medicas = (String) tabela1.getValueAt​(index, 15);
+        
+        CadastroPetDAO bd;
+        
+        try {
+                bd = new CadastroPetDAO();
             
-            JOptionPane.showMessageDialog(this, "Nenhuma linha selecionada", "Aviso", JOptionPane.WARNING_MESSAGE);
+                if (index != -1) {
+
+                String op = JOptionPane.showInputDialog(this, "1 - IDADE\n 2 - PESO\n 3 - CARACTERISTICAS\n 4 - NOME DO TUTOR\n 5 - CONTATO\n 6 - CPF\n 7 - ENDEREÇO\n Escolha um valor a ser alterado: ");
+
+
+                switch(op){
+                    case "1":
+                         idade = JOptionPane.showInputDialog(this, "Qual a idade de seu pet?");
+
+                         ModeloTabelaPets.listaCadastros.get(index).setIdade(idade);
+                         modeloTabela.setValueAt(idade, index, 5);
+
+                         campo = "idade";
+                         valor = idade;
+
+                        break;
+
+                    case "2":
+                        peso = JOptionPane.showInputDialog(this, "Qual o novo peso do seu pet?");
+
+                         ModeloTabelaPets.listaCadastros.get(index).setPeso(peso);
+                         modeloTabela.setValueAt(peso, index, 7);
+
+                         campo = "peso";
+                         valor = peso;
+                        break;
+
+                    case "3":
+                        caracteristicas = JOptionPane.showInputDialog(this, "Qual a nova caracteristica de seu pet?");
+
+                         ModeloTabelaPets.listaCadastros.get(index).setCaracteristicas(caracteristicas);
+                         modeloTabela.setValueAt(caracteristicas, index, 8);
+
+                         campo = "caracteristicas";
+                         valor = caracteristicas;
+                        break;
+
+
+                    case "4":
+                        nomeTutor = JOptionPane.showInputDialog(this, "Qual o novo tutor do Pet");
+
+                        campo = "nomeTutor";
+                        valor = nomeTutor;
+                         ModeloTabelaPets.listaCadastros.get(index).setNomeTutor(nomeTutor);
+                         modeloTabela.setValueAt(nomeTutor, index, 9);
+
+                        break;
+
+                    case "5":
+                        contato = JOptionPane.showInputDialog(this, "Qual o novo contato do tutor?");
+
+                        campo = "contato";
+                        valor = contato;
+                         ModeloTabelaPets.listaCadastros.get(index).setNomeTutor(contato);
+                         modeloTabela.setValueAt(contato, index, 10);
+
+                        break;
+
+                    case "6":
+                        num_cpf = JOptionPane.showInputDialog(this, "Qual o CPF do seu novo tutor?");
+
+                        campo = "num_cpf";
+                        valor = num_cpf;
+                         ModeloTabelaPets.listaCadastros.get(index).setNomeTutor(num_cpf);
+                         modeloTabela.setValueAt(num_cpf, index, 11);
+
+                        break;
+
+                    case "7":
+                        endereco = JOptionPane.showInputDialog(this, "Qual o novo endereço do tutor?");
+
+                        campo = "endereco";
+                        valor = endereco;
+                         ModeloTabelaPets.listaCadastros.get(index).setNomeTutor(endereco);
+                         modeloTabela.setValueAt(endereco, index, 12);
+
+                        break;
+
+                    default:
+
+                        JOptionPane.showInputDialog(this, "OPCAO INVALIDA!");
+
+                        break;
+                }
+
+               bd.alterCadastros(campo, valor, parseInt(id));
+
+
+            } else {
+
+                JOptionPane.showMessageDialog(this, "Nenhuma linha selecionada", "Aviso", JOptionPane.WARNING_MESSAGE);
+
+            }
+            
+        } catch (Exception e) {
+            Logger.getLogger(Busca_Pet.class.getName()).log(Level.SEVERE, null, e);
+        }
+        
+        //bd.desconnectBD();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+        String busca = jTextField1.getText();
+        String filtro = (String) jComboBox1.getSelectedItem();
+        /*
+        CadastroPetDAO bd;
+       
+        FiltroPets fil = new FiltroPets();
+        fil.definirFiltro();
+        
+         
+        switch(filtro){
+            case "Nome":
+                try {
+                    bd = new CadastroPetDAO();
+                    bd.selectFilterCadastros("nomePet", busca);
+                    //new Busca_Pet().setVisible(true);
+                    atualizarTabela();
+                    dispose();
+
+                } catch (Exception e) {
+                    Logger.getLogger(Opc_Cadastros.class.getName()).log(Level.SEVERE, null, e);
+                }
+                break;
+                
+            case "Características":
+                try {
+                    bd = new CadastroPetDAO();
+                    bd.selectFilterCadastros("caracteristicas", busca);
+                    //new Busca_Pet().setVisible(true);
+                    atualizarTabela();
+                    dispose();
+
+                } catch (Exception e) {
+                    Logger.getLogger(Opc_Cadastros.class.getName()).log(Level.SEVERE, null, e);
+                }
+                break;
+                
+            case "Tutor":
+                try {
+                    bd = new CadastroPetDAO();
+                    bd.selectFilterCadastros("nomeTutor", busca);
+                    //new Busca_Pet().setVisible(true);
+                    atualizarTabela();
+                    dispose();
+
+                } catch (Exception e) {
+                    Logger.getLogger(Opc_Cadastros.class.getName()).log(Level.SEVERE, null, e);
+                }
+                break;
+                
+            case "Endereço":
+                try {
+                    bd = new CadastroPetDAO();
+                    bd.selectFilterCadastros("endereco", busca);
+                    //new Busca_Pet().setVisible(true);
+                    atualizarTabela();
+                    dispose();
+
+                } catch (Exception e) {
+                    Logger.getLogger(Opc_Cadastros.class.getName()).log(Level.SEVERE, null, e);
+                }
+                break;
+                
+            default:
+                throw new IllegalArgumentException("Filtro inválido: " + filtro);
             
         }
         
-        bd.desconnectBD();*/
-    }//GEN-LAST:event_jButton3ActionPerformed
+        */
+        
+        
+        
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -237,6 +501,8 @@ public class Busca_Pet extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
