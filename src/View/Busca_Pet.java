@@ -1,27 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package View;
 
-import static java.lang.Integer.parseInt;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import DAO.CadastroPetDAO;
+import com.itextpdf.text.log.Logger;
+import java.lang.System.Logger.Level;
 import DAO.ConnectionPetDAO;
-import Filtros.FiltroPets;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import Model.ModeloTabelaPets;
-import java.sql.SQLException;
+import static java.lang.Integer.parseInt;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
-/**
- *
- * @author Iumy P.F
- */
 public class Busca_Pet extends javax.swing.JFrame {
     
     private JTable tabela1;
@@ -211,8 +201,8 @@ public class Busca_Pet extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Nenhuma linha selecionada", "Aviso", JOptionPane.WARNING_MESSAGE);
 
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(Busca_Pet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e) {
+            System.err.println("Erro: " + e.getMessage());
         }
    
         //bd.desconnectBD();
@@ -349,7 +339,7 @@ public class Busca_Pet extends javax.swing.JFrame {
                 
             bdd.desconectar();
         } catch (Exception e) {
-            Logger.getLogger(Busca_Pet.class.getName()).log(Level.SEVERE, null, e);
+            System.err.println("Erro: " + e.getMessage());
         }
         
         

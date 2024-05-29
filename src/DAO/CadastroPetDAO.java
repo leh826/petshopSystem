@@ -1,17 +1,11 @@
 
 package DAO;
-import DAO.ConnectionPetDAO;
-import View.Busca_Pet;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import Model.ModeloTabelaPets;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 
 public class CadastroPetDAO {
@@ -189,6 +183,4 @@ public class CadastroPetDAO {
             
             return false;
         }*/
-    
-
 }
