@@ -2,6 +2,7 @@ package View;
 
 import DAO.CadastroPetDAO;
 import DAO.ConnectionPetDAO;
+import View.Busca_Pet;
 import View.TelaProdutos;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -208,19 +209,28 @@ public class Opc_Cadastros extends javax.swing.JFrame {
 
         CadastroPetDAO bd;
         ConnectionPetDAO bdd;
+        Busca_Pet buscaPet = new Busca_Pet();
+        
         try {
             bd = new CadastroPetDAO();
             bdd = new ConnectionPetDAO();
             
             bd.selectCadastros();
-            new Busca_Pet().setVisible(true);
+            
+            
+            buscaPet.setVisible(true);
+            
+            buscaPet.limparTabela();
+            
+            buscaPet.atualizarTabela(); 
+            
             dispose();
             
             bdd.desconectar();
-            
         } catch (Exception e) {
             Logger.getLogger(Opc_Cadastros.class.getName()).log(Level.SEVERE, null, e);
         }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
