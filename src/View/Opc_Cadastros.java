@@ -4,7 +4,6 @@ import DAO.CadastroPetDAO;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import CustomTableCellRenderer.CustomTableCellRenderer;
 
 public class Opc_Cadastros extends javax.swing.JFrame {
 
