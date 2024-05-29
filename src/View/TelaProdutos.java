@@ -1,12 +1,13 @@
 package View;
 
-import View.TelaCadastro;
 import Controler.ControlerProdutos;
 import CustomTableCellRenderer.CustomTableCellRenderer;
 import Filtros.FiltroCategoriaGrupo;
 import Filtros.FiltroGeral;
 import Filtros.FiltroPesquisaProdutos;
+import Model.ModeloTabelaProdutos;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.DefaultTableModel;
 
 public class TelaProdutos extends javax.swing.JFrame {
     
@@ -16,7 +17,7 @@ public class TelaProdutos extends javax.swing.JFrame {
      */
     public TelaProdutos() {
         initComponents(); // Inicialize os componentes primeiro
-        
+
         // Inicialize o filtro de pesquisa
         filtroPesquisa = new FiltroPesquisaProdutos();
         filtroPesquisa.setupTableFilter(jTable1, jTextField9, jComboBox1);
@@ -30,8 +31,12 @@ public class TelaProdutos extends javax.swing.JFrame {
 
         // Configurar o filtro geral
         FiltroGeral filtroGeral = new FiltroGeral(jTable1, jComboBox1);
+
+        // Preencher a tabela com os dados do banco de dados
+        ModeloTabelaProdutos modeloTabelaProdutos = new ModeloTabelaProdutos();
+        modeloTabelaProdutos.preencherTabela(jTable1);
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -56,7 +61,6 @@ public class TelaProdutos extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jToggleButton1 = new javax.swing.JToggleButton();
         jToggleButton2 = new javax.swing.JToggleButton();
         jToggleButton3 = new javax.swing.JToggleButton();
         jToggleButton4 = new javax.swing.JToggleButton();
@@ -64,7 +68,6 @@ public class TelaProdutos extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -73,7 +76,7 @@ public class TelaProdutos extends javax.swing.JFrame {
         label3.setForeground(new java.awt.Color(255, 255, 255));
         label3.setPreferredSize(new java.awt.Dimension(20, 20));
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Estoque");
 
         label1.setBackground(new java.awt.Color(255, 102, 102));
@@ -115,8 +118,6 @@ public class TelaProdutos extends javax.swing.JFrame {
 
         jLabel9.setText("Pesquisar");
 
-        jToggleButton1.setText("Cod Barra");
-
         jToggleButton2.setText("Cadastrar");
         jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,24 +146,15 @@ public class TelaProdutos extends javax.swing.JFrame {
             }
         });
 
+        ModeloTabelaProdutos modelProduto = new ModeloTabelaProdutos();
         jTable1.setBackground(new java.awt.Color(204, 204, 204));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, "CAsa", "1", null, "", null, "0", null, "Produto", null, null, null, null, null},
-                {null, "PRaia", "2", null, "3", null, null, "Prato", null, null, null, null, null, null},
-                {null, "Verde", "3", null, null, null, "4", null, "Serviço", null, null, null, null, null},
-                {null, "A", "4", null, null, null, "10", "Alimento", null, null, null, null, null, null}
-            },
-            new String [] {
-                "Código de Barras", "Referência", "Código", "Uni", "Valor Compra", "Valor de Venda", "Quantidade", "Grupo/Categoria", "Tipo", "Marca do Produto", "Validade", "Localização", "Fornecedor", "Data de Entrada"
-            }
-        ));
+        DefaultTableModel model = new DefaultTableModel();
+        jTable1.setModel(model);
+        modelProduto.preencherTabela(jTable1);
         jTable1.setDefaultRenderer(Object.class, new CustomTableCellRenderer());
         jScrollPane2.setViewportView(jTable1);
 
         jScrollPane1.setViewportView(jScrollPane2);
-
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/codigo-de-barras.png"))); // NOI18N
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/pata.png"))); // NOI18N
 
@@ -198,12 +190,6 @@ public class TelaProdutos extends javax.swing.JFrame {
                                         .addComponent(jLabel5)
                                         .addGap(44, 44, 44)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jToggleButton1)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jLabel7)
-                                        .addGap(10, 10, 10)))
-                                .addGap(19, 19, 19)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jToggleButton2)
@@ -216,9 +202,7 @@ public class TelaProdutos extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jToggleButton4)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel11)
-                                        .addGap(1, 1, 1)))
+                                    .addComponent(jLabel11))
                                 .addGap(52, 52, 52)
                                 .addComponent(jButton3)))
                         .addContainerGap())))
@@ -246,21 +230,16 @@ public class TelaProdutos extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel8)
-                                .addComponent(jLabel10)
-                                .addComponent(jLabel11))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jToggleButton2)
-                                .addComponent(jToggleButton3)
-                                .addComponent(jToggleButton4)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel7)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jToggleButton1)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel11))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jToggleButton2)
+                            .addComponent(jToggleButton3)
+                            .addComponent(jToggleButton4)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
@@ -308,18 +287,23 @@ public class TelaProdutos extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
-        ControlerProdutos bt = new ControlerProdutos();
-        bt.btnAlterarDados(jTable1);
+    ControlerProdutos controlerProdutos = new ControlerProdutos();
+    controlerProdutos.chamarBtnAlterarDados(jTable1);
+    dispose();
+    new TelaProdutos().setVisible(true);
     }//GEN-LAST:event_jToggleButton3ActionPerformed
 
     private void jToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton4ActionPerformed
         ControlerProdutos bt = new ControlerProdutos();
         bt.btnDeletar(jTable1);
+        dispose();
+        new TelaProdutos().setVisible(true);
     }//GEN-LAST:event_jToggleButton4ActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
         TelaCadastro cadastro = new TelaCadastro();
         new TelaCadastro().setVisible(true);
+        dispose();
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
@@ -373,14 +357,12 @@ public class TelaProdutos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField9;
-    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JToggleButton jToggleButton3;
     private javax.swing.JToggleButton jToggleButton4;

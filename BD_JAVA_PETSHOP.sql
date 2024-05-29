@@ -28,3 +28,20 @@ ALTER TABLE Cadastro_Pets AUTO_INCREMENT = 1000;
 SELECT * FROM Cadastro_Pets;
 DROP TABLE Cadastro_Pets;
 */
+USE petshop;
+CREATE TABLE Cadastro_Produtos_Pets (
+    codigo_barras INT,
+    referencia VARCHAR(30),
+    codigo INT NOT NULL,
+    unidade VARCHAR(10),
+    valor_compra DOUBLE,
+    valor_venda DOUBLE,
+    cor VARCHAR(30),
+    quantidade INT,
+    categoria VARCHAR(30) NOT NULL,
+    marca VARCHAR(20),
+    validade DATE,
+    localizacao VARCHAR(15),
+    fornecedor VARCHAR(30),
+    data_entrada DATE
+);

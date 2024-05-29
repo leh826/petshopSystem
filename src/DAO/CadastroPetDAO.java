@@ -1,6 +1,5 @@
 
 package DAO;
-import DAO.ConnectionPetDAO;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -19,8 +18,8 @@ public class CadastroPetDAO {
     
     private final String URLBD = "jdbc:mysql://localhost:3306/petshop"; 
     
-    private final String user = "iumy";
-    private final String password = "iumy"; 
+    private final String user = "root";
+    private final String password = "root"; 
 
     // Metodo responsavel por abrir a conexão
     public CadastroPetDAO() {
@@ -93,75 +92,6 @@ public class CadastroPetDAO {
         }
         
     }
-    
-    /*
-    public boolean insetCadastrosPet(String nomePet, String especie, String raca, String sexo, String idade, String cor, String peso, String caracteristicas){
-       
-        try{
-            PreparedStatement psInsert = connect.prepareStatement("INSERT INTO Cadastro_Pets(nomePet, especie, raca, sexo, idade, cor, peso, caracteristicas) VALUES (?,?,?,?,?,?,?,?)");
-            psInsert.setString(1, nomePet);
-            psInsert.setString(2, especie);
-            psInsert.setString(3, raca);
-            psInsert.setString(4, sexo);
-            psInsert.setString(5, idade);
-            psInsert.setString(6, cor);
-            psInsert.setString(7, peso);
-            psInsert.setString(8, caracteristicas);
-            
-           JOptionPane.showMessageDialog(null, "Operacao com Sucesso! Cadastro inserido!");
-             
-            return psInsert.execute();
-            
-        }catch (Exception e){
-            e.printStackTrace();
-            
-            return false;
-        }
-        
-    }
-    
-    public boolean insertInfoSaudePet(String historico_vacinacao, String medicamentos_uso, String alergias, String hist_doencas_cond_medicas){
-       
-        try{
-            PreparedStatement psInsert = connect.prepareStatement("INSERT INTO Info_Saude_Pet(historico_vacinacao, medicamentos_uso, alergias, hist_doencas_cond_medicas) VALUES (?,?,?,?)");
-            psInsert.setString(1, historico_vacinacao);
-            psInsert.setString(2, medicamentos_uso);
-            psInsert.setString(3, alergias);
-            psInsert.setString(4, hist_doencas_cond_medicas);
-            
-           JOptionPane.showMessageDialog(null, "Operacao com Sucesso! Cadastro inserido!");
-             
-            return psInsert.execute();
-            
-        }catch (Exception e){
-            e.printStackTrace();
-            
-            return false;
-        }
-        
-    } 
-    
-    public boolean insertInfoTutor(String nomeTutor, String contato, String num_cpf, String endereco){
-       
-        try{
-            PreparedStatement psInsert = connect.prepareStatement("INSERT INTO Info_Tutores_Pet(nomeTutor, contato, num_cpf, endereco) VALUES (?,?,?,?)");
-            psInsert.setString(1, nomeTutor);
-            psInsert.setString(2, contato);
-            psInsert.setString(3, num_cpf);
-            psInsert.setString(4, endereco);
-            
-           JOptionPane.showMessageDialog(null, "Operacao com Sucesso! Cadastro inserido!");
-             
-            return psInsert.execute();
-            
-        }catch (Exception e){
-            e.printStackTrace();
-            
-            return false;
-        }
-        
-    }
-    */
     
      public boolean alterCadastros(String campo, String valor, int id){
         try{
