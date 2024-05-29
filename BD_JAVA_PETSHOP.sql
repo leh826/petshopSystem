@@ -1,5 +1,5 @@
 
-/*CREATE DATABASE petshop;*/
+CREATE DATABASE petshop;
 USE petshop;
 
 -- Tabela para informações básicas dos pets
@@ -28,3 +28,20 @@ ALTER TABLE Cadastro_Pets AUTO_INCREMENT = 1000;
 SELECT * FROM Cadastro_Pets;
 DROP TABLE Cadastro_Pets;
 */
+CREATE TABLE Cadastro_Produtos_Pets (
+    codigo_barras INT,
+    referencia VARCHAR(30),
+    codigo INT,
+    unidade VARCHAR(10),
+    valorCompra FLOAT,
+    valorVenda FLOAT,
+    cor VARCHAR(30),
+    quantidade INT,
+    categoria VARCHAR(30),
+    marca VARCHAR(20),
+    validade DATE,
+    localizacao VARCHAR(15),
+    fornecedor VARCHAR(30),
+    dataEntrada DATE
+);
+CREATE TABLE 
