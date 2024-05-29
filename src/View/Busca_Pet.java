@@ -71,22 +71,18 @@ public class Busca_Pet extends javax.swing.JFrame {
         
     }
 
-    private void atualizarTabela() {
+    public void atualizarTabela() {
         
         modeloTabela.setRowCount(0);
 
         for (ModeloTabelaPets cad : ModeloTabelaPets.listaCadastros) {
             exibirCadastros.adicionarCads(cad);
         }
+        
     }
     
-    private void atualizarTabela2(List<ModeloTabelaPets> resultados) {
-        DefaultTableModel model = (DefaultTableModel) tabela1.getModel();
-        modeloTabela.setRowCount(0);
-
-        for (ModeloTabelaPets cad : ModeloTabelaPets.listaCadastros) {
-            exibirCadastros.adicionarCads(cad);
-        }
+    public void limparTabela() {
+        modeloTabela.setRowCount(0); 
     }
 
 
@@ -104,6 +100,7 @@ public class Busca_Pet extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         canvas1 = new java.awt.Canvas();
         jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Buscar Pet");
@@ -113,6 +110,11 @@ public class Busca_Pet extends javax.swing.JFrame {
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -136,6 +138,9 @@ public class Busca_Pet extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(102, 0, 102));
         jLabel2.setText("Pets Cadastrados");
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/barra-logo-5.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -153,6 +158,7 @@ public class Busca_Pet extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,7 +171,8 @@ public class Busca_Pet extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addGap(337, 337, 337)
                 .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
+                .addComponent(jLabel1))
         );
 
         pack();
@@ -173,8 +180,15 @@ public class Busca_Pet extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
+        
         dispose();
+        
+        atualizarTabela();
+        
+        limparTabela();
+        
         new Opc_Cadastros().setVisible(true);
+        
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -345,6 +359,10 @@ public class Busca_Pet extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -385,6 +403,7 @@ public class Busca_Pet extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
