@@ -140,18 +140,14 @@ public class CaixaView extends javax.swing.JFrame {
         );
 
         pack();
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     }// </editor-fold>//GEN-END:initComponents
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {   
 
     }
     private void cbmStatusPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbmStatusPedidoActionPerformed
 
-    }//GEN-LAST:event_cbmStatusPedidoActionPerformed
-=======
-    }// </editor-fold>                           
->>>>>>> 9fbcdaab36998ca214c5414af083f0cd89a82eaf
+    }//GEN-LAST:event_cbmStatusPedidoActionPerformed                       
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
         imprimir("C:\\Users\\Leticia\\OneDrive\\Documentos\\Constraints_letícia souza.docx");
