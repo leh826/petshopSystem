@@ -10,10 +10,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Iumy P.F
- */
 public class Cad_Pet extends javax.swing.JFrame {
 
     /**
@@ -101,7 +97,7 @@ public class Cad_Pet extends javax.swing.JFrame {
         jTabbedPane2.setBackground(new java.awt.Color(255, 255, 255));
         jTabbedPane2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jTabbedPane2.setAutoscrolls(true);
-        jTabbedPane2.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jTabbedPane2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -283,7 +279,7 @@ public class Cad_Pet extends javax.swing.JFrame {
                             .addComponent(jLabel1)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
