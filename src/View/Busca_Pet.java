@@ -2,13 +2,14 @@ package View;
 
 import javax.swing.table.DefaultTableModel;
 import DAO.CadastroPetDAO;
+import com.itextpdf.text.log.Logger;
+import java.lang.System.Logger.Level;
+import DAO.ConnectionPetDAO;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import Model.ModeloTabelaPets;
 import static java.lang.Integer.parseInt;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class Busca_Pet extends javax.swing.JFrame {
@@ -98,25 +99,14 @@ public class Busca_Pet extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         canvas1 = new java.awt.Canvas();
-        jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Buscar Pet");
-
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/pesquisa-de-lupa.png"))); // NOI18N
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton1.setText("Voltar");
@@ -142,35 +132,21 @@ public class Busca_Pet extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setText("Buscar por:");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pesquisar Todos", "Nome", "Características", "Tutor", "Endereço", " " }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
+        jLabel2.setFont(new java.awt.Font("Segoe Print", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(102, 0, 102));
+        jLabel2.setText("Pets Cadastrados");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addContainerGap(269, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 749, Short.MAX_VALUE)
-                        .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(canvas1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
+                        .addComponent(jLabel2)
+                        .addGap(187, 187, 187)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -181,22 +157,15 @@ public class Busca_Pet extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2)
-                            .addComponent(jButton3))
-                        .addComponent(jLabel3))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(332, 332, 332)
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3)
+                    .addComponent(jLabel2))
+                .addGap(337, 337, 337)
                 .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(110, Short.MAX_VALUE))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
 
         pack();
@@ -233,7 +202,7 @@ public class Busca_Pet extends javax.swing.JFrame {
 
             }
         } catch (Exception e) {
-            Logger.getLogger(Busca_Pet.class.getName()).log(Level.SEVERE, null, e);
+            System.err.println("Erro: " + e.getMessage());
         }
    
         //bd.desconnectBD();
@@ -267,8 +236,10 @@ public class Busca_Pet extends javax.swing.JFrame {
         String hist_doencas_cond_medicas = (String) tabela1.getValueAt​(index, 15);
         
         CadastroPetDAO bd;
+        ConnectionPetDAO bdd;
         
         try {
+                bdd = new ConnectionPetDAO();
                 bd = new CadastroPetDAO();
             
                 if (index != -1) {
@@ -357,6 +328,7 @@ public class Busca_Pet extends javax.swing.JFrame {
                 }
 
                bd.alterCadastros(campo, valor, parseInt(id));
+               
 
 
             } else {
@@ -364,92 +336,14 @@ public class Busca_Pet extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Nenhuma linha selecionada", "Aviso", JOptionPane.WARNING_MESSAGE);
 
             }
-            
+                
+            bdd.desconectar();
         } catch (Exception e) {
-            Logger.getLogger(Busca_Pet.class.getName()).log(Level.SEVERE, null, e);
+            System.err.println("Erro: " + e.getMessage());
         }
         
-        //bd.desconnectBD();
+        
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-        String busca = jTextField1.getText();
-        String filtro = (String) jComboBox1.getSelectedItem();
-        /*
-        CadastroPetDAO bd;
-       
-        FiltroPets fil = new FiltroPets();
-        fil.definirFiltro();
-        
-         
-        switch(filtro){
-            case "Nome":
-                try {
-                    bd = new CadastroPetDAO();
-                    bd.selectFilterCadastros("nomePet", busca);
-                    //new Busca_Pet().setVisible(true);
-                    atualizarTabela();
-                    dispose();
-
-                } catch (Exception e) {
-                    Logger.getLogger(Opc_Cadastros.class.getName()).log(Level.SEVERE, null, e);
-                }
-                break;
-                
-            case "Características":
-                try {
-                    bd = new CadastroPetDAO();
-                    bd.selectFilterCadastros("caracteristicas", busca);
-                    //new Busca_Pet().setVisible(true);
-                    atualizarTabela();
-                    dispose();
-
-                } catch (Exception e) {
-                    Logger.getLogger(Opc_Cadastros.class.getName()).log(Level.SEVERE, null, e);
-                }
-                break;
-                
-            case "Tutor":
-                try {
-                    bd = new CadastroPetDAO();
-                    bd.selectFilterCadastros("nomeTutor", busca);
-                    //new Busca_Pet().setVisible(true);
-                    atualizarTabela();
-                    dispose();
-
-                } catch (Exception e) {
-                    Logger.getLogger(Opc_Cadastros.class.getName()).log(Level.SEVERE, null, e);
-                }
-                break;
-                
-            case "Endereço":
-                try {
-                    bd = new CadastroPetDAO();
-                    bd.selectFilterCadastros("endereco", busca);
-                    //new Busca_Pet().setVisible(true);
-                    atualizarTabela();
-                    dispose();
-
-                } catch (Exception e) {
-                    Logger.getLogger(Opc_Cadastros.class.getName()).log(Level.SEVERE, null, e);
-                }
-                break;
-                
-            default:
-                throw new IllegalArgumentException("Filtro inválido: " + filtro);
-            
-        }
-        
-        */
-        
-        
-        
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -491,9 +385,6 @@ public class Busca_Pet extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

@@ -250,7 +250,7 @@ public class Caixa extends javax.swing.JFrame {
 
     private void btnSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSairMouseClicked
         dispose();
-        new TelaOrçamento().setVisible(true);
+        //new TelaOrçamento().setVisible(true);
     }//GEN-LAST:event_btnSairMouseClicked
     public void imprimir(String caminhoArquivo) {
         Desktop desktop = Desktop.getDesktop();
