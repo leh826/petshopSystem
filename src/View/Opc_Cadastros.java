@@ -195,7 +195,7 @@ public class Opc_Cadastros extends javax.swing.JFrame {
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
 
-        //new TelaOrçamento().setVisible(true);
+        new TelaOrçamento().setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton3MouseClicked
 

@@ -284,6 +284,7 @@ public class TelaProdutos extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         dispose();
+        new Opc_Cadastros().setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
