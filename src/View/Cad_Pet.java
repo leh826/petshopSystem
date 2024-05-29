@@ -5,6 +5,9 @@
 package View;
 import DAO.CadastroPetDAO;
 import Controler.ControlerCadPet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -690,15 +693,22 @@ public class Cad_Pet extends javax.swing.JFrame {
             
             //ct.validaDadosCorretos();
             
-                CadastroPetDAO bd = new CadastroPetDAO();
-                
+                CadastroPetDAO bd;
+            try {
+                bd = new CadastroPetDAO();
                 bd.insetCadastrosPet(nomePet, especie, raca, sexo, idade, cor, peso, caracteristicas, nomeTutor, contato, num_cpf, endereco, historico_vacinacao, medicamentos_uso, alergias, hist_doencas_cond_medicas);
+               
+            } catch (SQLException ex) {
+                Logger.getLogger(Cad_Pet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                
+                //bd.insetCadastrosPet(nomePet, especie, raca, sexo, idade, cor, peso, caracteristicas, nomeTutor, contato, num_cpf, endereco, historico_vacinacao, medicamentos_uso, alergias, hist_doencas_cond_medicas);
                
                 /*bd.insetCadastrosPet(nomePet, especie, raca, sexo, idade, cor, peso, caracteristicas);
                bd.insertInfoSaudePet(historico_vacinacao, medicamentos_uso, alergias, hist_doencas_cond_medicas);
                bd.insertInfoTutor(nomeTutor, contato, num_cpf, endereco);*/
 
-                bd.desconnectBD();
+                //bd.desconnectBD();
                 
             
             

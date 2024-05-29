@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import Model.ModeloTabelaPets;
+import java.sql.SQLException;
 
 /**
  *
@@ -14,6 +15,7 @@ import Model.ModeloTabelaPets;
  */
 public class CadastroPetDAO {
     
+    /*
     private Connection connect;
     
     
@@ -56,15 +58,23 @@ public class CadastroPetDAO {
             JOptionPane.showMessageDialog(null, "Erro ao fechar a conexão!\nERRO: " + e.getMessage(), "Banco de Dados", JOptionPane.INFORMATION_MESSAGE);
         }
     }
-    
+    */
     /*
     ConnectionDAO bd = new ConnectionDAO();
     private Connection connect;*/
     
+    private final ConnectionPetDAO ConnectionPetDAO;
+
+    public CadastroPetDAO() throws SQLException {
+        this.ConnectionPetDAO = new ConnectionPetDAO();
+    }
+    
     public boolean insetCadastrosPet(String nomePet, String especie, String raca, String sexo, String idade, String cor, String peso, String caracteristicas, String nomeTutor, String contato, String num_cpf, String endereco, String historico_vacinacao, String medicamentos_uso, String alergias, String hist_doencas_cond_medicas){
        
-        try{
-            PreparedStatement psInsert = connect.prepareStatement("INSERT INTO Cadastro_Pets(nomePet, especie, raca, sexo, idade, cor, peso, caracteristicas, nomeTutor, contato, num_cpf, endereco, historico_vacinacao, medicamentos_uso, alergias, hist_doencas_cond_medicas) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        String sql = "INSERT INTO Cadastro_Pets(nomePet, especie, raca, sexo, idade, cor, peso, caracteristicas, nomeTutor, contato, num_cpf, endereco, historico_vacinacao, medicamentos_uso, alergias, hist_doencas_cond_medicas) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        try(Connection conexao = ConnectionPetDAO.getConnection();
+             PreparedStatement psInsert = conexao.prepareStatement(sql)){
+            
             psInsert.setString(1, nomePet);
             psInsert.setString(2, especie);
             psInsert.setString(3, raca);
@@ -94,78 +104,11 @@ public class CadastroPetDAO {
         
     }
     
-    /*
-    public boolean insetCadastrosPet(String nomePet, String especie, String raca, String sexo, String idade, String cor, String peso, String caracteristicas){
-       
-        try{
-            PreparedStatement psInsert = connect.prepareStatement("INSERT INTO Cadastro_Pets(nomePet, especie, raca, sexo, idade, cor, peso, caracteristicas) VALUES (?,?,?,?,?,?,?,?)");
-            psInsert.setString(1, nomePet);
-            psInsert.setString(2, especie);
-            psInsert.setString(3, raca);
-            psInsert.setString(4, sexo);
-            psInsert.setString(5, idade);
-            psInsert.setString(6, cor);
-            psInsert.setString(7, peso);
-            psInsert.setString(8, caracteristicas);
-            
-           JOptionPane.showMessageDialog(null, "Operacao com Sucesso! Cadastro inserido!");
-             
-            return psInsert.execute();
-            
-        }catch (Exception e){
-            e.printStackTrace();
-            
-            return false;
-        }
-        
-    }
-    
-    public boolean insertInfoSaudePet(String historico_vacinacao, String medicamentos_uso, String alergias, String hist_doencas_cond_medicas){
-       
-        try{
-            PreparedStatement psInsert = connect.prepareStatement("INSERT INTO Info_Saude_Pet(historico_vacinacao, medicamentos_uso, alergias, hist_doencas_cond_medicas) VALUES (?,?,?,?)");
-            psInsert.setString(1, historico_vacinacao);
-            psInsert.setString(2, medicamentos_uso);
-            psInsert.setString(3, alergias);
-            psInsert.setString(4, hist_doencas_cond_medicas);
-            
-           JOptionPane.showMessageDialog(null, "Operacao com Sucesso! Cadastro inserido!");
-             
-            return psInsert.execute();
-            
-        }catch (Exception e){
-            e.printStackTrace();
-            
-            return false;
-        }
-        
-    } 
-    
-    public boolean insertInfoTutor(String nomeTutor, String contato, String num_cpf, String endereco){
-       
-        try{
-            PreparedStatement psInsert = connect.prepareStatement("INSERT INTO Info_Tutores_Pet(nomeTutor, contato, num_cpf, endereco) VALUES (?,?,?,?)");
-            psInsert.setString(1, nomeTutor);
-            psInsert.setString(2, contato);
-            psInsert.setString(3, num_cpf);
-            psInsert.setString(4, endereco);
-            
-           JOptionPane.showMessageDialog(null, "Operacao com Sucesso! Cadastro inserido!");
-             
-            return psInsert.execute();
-            
-        }catch (Exception e){
-            e.printStackTrace();
-            
-            return false;
-        }
-        
-    }
-    */
-    
      public boolean alterCadastros(String campo, String valor, int id){
-        try{
-            PreparedStatement psInsert = connect.prepareStatement("UPDATE Cadastro_Pets SET " + campo + " = ? WHERE id = ?");
+         String sql = "UPDATE Cadastro_Pets SET " + campo + " = ? WHERE id = ?";
+        try(Connection conexao = ConnectionPetDAO.getConnection();
+             PreparedStatement psInsert = conexao.prepareStatement(sql)){
+            
             psInsert.setString(1, valor);
             psInsert.setInt(2, id); 
             
@@ -183,8 +126,10 @@ public class CadastroPetDAO {
      
     // Metodo responsavel por deletar dados
     public boolean deleteCadastros(int id){
-        try{
-            PreparedStatement psDelete = connect.prepareStatement("DELETE FROM Cadastro_Pets WHERE id = ?");
+        String sql = "DELETE FROM Cadastro_Pets WHERE id = ?";
+        try(Connection conexao = ConnectionPetDAO.getConnection();
+             PreparedStatement psDelete = conexao.prepareStatement(sql)){
+            
             psDelete.setInt(1,id);
             int rowsAffected = psDelete.executeUpdate();
       
@@ -200,9 +145,11 @@ public class CadastroPetDAO {
     
     
     public boolean selectCadastros(){
-        try{
-            PreparedStatement psInsert = connect.prepareStatement("SELECT * FROM Cadastro_Pets ORDER BY id");
-            
+        
+        String sql = "SELECT * FROM Cadastro_Pets ORDER BY id";
+        try(Connection conexao = ConnectionPetDAO.getConnection();
+             PreparedStatement psInsert = conexao.prepareStatement(sql)){
+           
             ResultSet rs;
             rs = psInsert.executeQuery();
 
