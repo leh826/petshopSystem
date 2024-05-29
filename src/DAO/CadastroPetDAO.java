@@ -13,10 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- *
- * @author Iumy P.F
- */
+
 public class CadastroPetDAO {
     
     private final ConnectionPetDAO ConnectionPetDAO;
