@@ -8,10 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Iumy P.F
- */
 public class ModeloTabelaPets {
     
     private static DefaultTableModel modeloTabela;
