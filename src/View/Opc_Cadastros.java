@@ -2,7 +2,10 @@ package View;
 
 import DAO.CadastroPetDAO;
 import DAO.ConnectionPetDAO;
+import View.Busca_Pet;
 import View.TelaProdutos;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -200,27 +203,45 @@ public class Opc_Cadastros extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
-        new TelaProdutos().setVisible(true);
-        dispose();
+        TelaProdutos frame = new TelaProdutos();
+
+    // Definir a posição central da janela
+    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    int x = (int) ((screenSize.getWidth() - frame.getWidth()) / 2);
+    int y = (int) ((screenSize.getHeight() - frame.getHeight()) / 2);
+    frame.setLocation(x, y);
+
+    frame.setVisible(true);
+    frame.pack(); // Redimensiona o JFrame para ajustar os componentes
+    dispose();
     }//GEN-LAST:event_jButton4MouseClicked
                                  
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         CadastroPetDAO bd;
         ConnectionPetDAO bdd;
+        Busca_Pet buscaPet = new Busca_Pet();
+        
         try {
             bd = new CadastroPetDAO();
             bdd = new ConnectionPetDAO();
             
             bd.selectCadastros();
-            new Busca_Pet().setVisible(true);
+            
+            
+            buscaPet.setVisible(true);
+            
+            buscaPet.limparTabela();
+            
+            buscaPet.atualizarTabela(); 
+            
             dispose();
             
             bdd.desconectar();
-            
         } catch (Exception e) {
             Logger.getLogger(Opc_Cadastros.class.getName()).log(Level.SEVERE, null, e);
         }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
