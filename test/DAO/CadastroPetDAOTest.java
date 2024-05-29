@@ -10,7 +10,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class CadastroPetDAOTest {
-    private  static  CadastroPetDAOTest petDao = null;
+    private  static  CadastroPetDAO petDao = null;
     public CadastroPetDAOTest() {
     }
     
@@ -36,13 +36,11 @@ public class CadastroPetDAOTest {
         pet.setContato("teste-pet");
         pet.setNum_cpf("teste-pet");
         pet.setEndereco("teste-pet");
-        pet.setHistorico_vacinacao("");
-        pet.setMedicamentos_uso("");
-        pet.setAlergias("");
-        pet.setHist_doencas_cond_medicas("");
-        
-        petDao.insetCadastrosPet(nomePet, especie, raca, sexo, idade, cor, peso, caracteristicas, nomeTutor, contato, num_cpf, endereco, historico_vacinacao, medicamentos_uso, alergias, hist_doencas_cond_medicas)strosPet(nomePet, especie, raca, sexo, idade, cor, peso, caracteristicas, nomeTutor, contato, num_cpf, endereco, historico_vacinacao, medicamentos_uso, alergias, hist_doencas_cond_medicas);
-        System.out.println(pet);
+        pet.setHistorico_vacinacao("teste");
+        pet.setMedicamentos_uso("teste");
+        pet.setAlergias("teste");
+        pet.setHist_doencas_cond_medicas("teste");
+        petDao.insetCadastrosPet(nomePet, especie, raca, sexo, idade, cor, peso, caracteristicas, nomeTutor, contato, num_cpf, endereco, historico_vacinacao, medicamentos_uso, alergias, hist_doencas_cond_medicas);
         assert (pet.getId()) != null);
     }
 

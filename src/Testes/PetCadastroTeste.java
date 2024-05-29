@@ -30,7 +30,7 @@ public class PetCadastroTeste {
     }
     @Test
     public void inserir(){
-        
+        Departamento d = new Departamento();
         d.setNome("DEV");
         departamentoDao.insert(d);
         System.out.println(d);
