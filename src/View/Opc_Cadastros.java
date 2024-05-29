@@ -8,6 +8,9 @@ import javax.swing.JOptionPane;
 import DAO.CadastroPetDAO;
 import Telas.TelaProdutos;
 import View.TelaOrçamento;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author Iumy P.F
@@ -190,20 +193,27 @@ public class Opc_Cadastros extends javax.swing.JFrame {
        
         new TelaProdutos().setVisible(true);
         dispose();
+
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         
-        CadastroPetDAO bd = new CadastroPetDAO();
+        CadastroPetDAO bd;
+        
+        try {
+            bd = new CadastroPetDAO();
+            bd.selectCadastros();
+            new Busca_Pet().setVisible(true);
+            dispose();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Opc_Cadastros.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
-        bd.selectCadastros();
         
-        new Busca_Pet().setVisible(true);
-        
-        dispose();
-        
-        bd.desconnectBD();
+          
+        //bd.desconnectBD();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

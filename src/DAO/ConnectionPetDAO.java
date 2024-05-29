@@ -5,9 +5,9 @@ import java.sql.SQLException;
 
 public class ConnectionPetDAO {
     private java.sql.Connection conexao;
-    private final String URLDB = "jdbc:mysql://localhost:3306/java_database";
-    private final String usuario = "root";
-    private final String senha = "root";
+    private final String URLDB = "jdbc:mysql://localhost:3306/petshop";
+    private final String usuario = "iumy";
+    private final String senha = "iumy";
     
     public ConnectionPetDAO() throws SQLException{
         
