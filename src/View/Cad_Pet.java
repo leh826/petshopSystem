@@ -687,34 +687,15 @@ public class Cad_Pet extends javax.swing.JFrame {
             String endereco = jTextField11.getText();
             
             System.out.println(nomePet);
-            
-            
-            //ControlerCadPet ct = new ControlerCadPet(nomePet, especie, raca, sexo, idade, cor, peso, caracteristicas, historico_vacinacao, medicametos_uso, alergias, hist_doencas_cond_medicas, nomeTutor, contato, num_cpf, endereco);
-            
-            //ct.validaDadosCorretos();
-            
+               
                 CadastroPetDAO bd;
             try {
                 bd = new CadastroPetDAO();
                 bd.insetCadastrosPet(nomePet, especie, raca, sexo, idade, cor, peso, caracteristicas, nomeTutor, contato, num_cpf, endereco, historico_vacinacao, medicamentos_uso, alergias, hist_doencas_cond_medicas);
                
-            } catch (SQLException ex) {
-                Logger.getLogger(Cad_Pet.class.getName()).log(Level.SEVERE, null, ex);
-            }
-                
-                //bd.insetCadastrosPet(nomePet, especie, raca, sexo, idade, cor, peso, caracteristicas, nomeTutor, contato, num_cpf, endereco, historico_vacinacao, medicamentos_uso, alergias, hist_doencas_cond_medicas);
-               
-                /*bd.insetCadastrosPet(nomePet, especie, raca, sexo, idade, cor, peso, caracteristicas);
-               bd.insertInfoSaudePet(historico_vacinacao, medicamentos_uso, alergias, hist_doencas_cond_medicas);
-               bd.insertInfoTutor(nomeTutor, contato, num_cpf, endereco);*/
-
-                //bd.desconnectBD();
-                
-            
-            
-            /*
-            
-            */
+            } catch (Exception e) {
+                Logger.getLogger(Cad_Pet.class.getName()).log(Level.SEVERE, null, e);
+            }        
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

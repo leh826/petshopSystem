@@ -6,7 +6,7 @@ package View;
 
 import javax.swing.JOptionPane;
 import DAO.CadastroPetDAO;
-import Telas.TelaProdutos;
+import View.TelaProdutos;
 import View.TelaOrçamento;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -207,8 +207,8 @@ public class Opc_Cadastros extends javax.swing.JFrame {
             new Busca_Pet().setVisible(true);
             dispose();
             
-        } catch (SQLException ex) {
-            Logger.getLogger(Opc_Cadastros.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e) {
+            Logger.getLogger(Opc_Cadastros.class.getName()).log(Level.SEVERE, null, e);
         }
 
         
