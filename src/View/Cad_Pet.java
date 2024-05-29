@@ -786,7 +786,8 @@ public class Cad_Pet extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Cad_Pet().setVisible(true);
+                //new Cad_Pet().setVisible(true);
+                new Opc_Cadastros().setVisible(true);
             }
         });
     }

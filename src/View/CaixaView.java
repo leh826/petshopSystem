@@ -24,7 +24,7 @@ public class CaixaView extends javax.swing.JFrame {
 
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
         jComboBox2 = new javax.swing.JComboBox<>();
@@ -66,7 +66,7 @@ public class CaixaView extends javax.swing.JFrame {
         });
         cbmStatusPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbmStatusPedidoActionPerformed(evt);
+                //cbmStatusPedidoActionPerformed(evt);
             }
         });
         caixa.add(cbmStatusPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 160, 30));
@@ -141,6 +141,7 @@ public class CaixaView extends javax.swing.JFrame {
 
         pack();
 <<<<<<< HEAD
+<<<<<<< HEAD
     }// </editor-fold>//GEN-END:initComponents
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {   
 
@@ -148,6 +149,9 @@ public class CaixaView extends javax.swing.JFrame {
     private void cbmStatusPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbmStatusPedidoActionPerformed
 
     }//GEN-LAST:event_cbmStatusPedidoActionPerformed
+=======
+    }// </editor-fold>                           
+>>>>>>> 9fbcdaab36998ca214c5414af083f0cd89a82eaf
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
         imprimir("C:\\Users\\Leticia\\OneDrive\\Documentos\\Constraints_letícia souza.docx");
