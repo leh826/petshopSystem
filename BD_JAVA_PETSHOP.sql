@@ -1,5 +1,5 @@
 
-CREATE DATABASE petshop;
+/CREATE DATABASE petshop;/
 USE petshop;
 
 -- Tabela para informações básicas dos pets
@@ -23,11 +23,11 @@ CREATE TABLE Cadastro_Pets (
     hist_doencas_cond_medicas VARCHAR(100)
 );
 
-/*
 ALTER TABLE Cadastro_Pets AUTO_INCREMENT = 1000;
-SELECT * FROM Cadastro_Pets;
+
+/*SELECT * FROM Cadastro_Pets;
 DROP TABLE Cadastro_Pets;
-*/
+SELECT * FROM Cadastro_Pets WHERE nomePet LIKE '%V%' ORDER BY id;*/
 
 USE petshop;
 CREATE TABLE Cadastro_Produtos_Pets (
@@ -37,29 +37,30 @@ CREATE TABLE Cadastro_Produtos_Pets (
     unidade VARCHAR(10),
     valor_compra DOUBLE,
     valor_venda DOUBLE,
-    cor VARCHAR(30),
     quantidade INT,
+    tipo VARCHAR(20),
     categoria VARCHAR(30) NOT NULL,
-
-CREATE TABLE Cadastro_Produtos_Pets (
-    codigo_barras INT,
-    referencia VARCHAR(30),
-    codigo INT,
-    unidade VARCHAR(10),
-    valorCompra FLOAT,
-    valorVenda FLOAT,
-    cor VARCHAR(30),
-    quantidade INT,
-    categoria VARCHAR(30),
     marca VARCHAR(20),
-    validade DATE,
+    validade INT,
     localizacao VARCHAR(15),
     fornecedor VARCHAR(30),
-
-    data_entrada DATE
+    data_entrada INT
 );
+/drop table Cadastro_Produtos_Pets;/
 
-    dataEntrada DATE
+USE petshop;
+CREATE TABLE Cadastro_pedido(
+    NumPedido INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    StatusPedido Varchar(50),
+    DataPedido datetime,
+    Hora        datetime,
+    Atendente   varchar(30),
+    Desconto    float,
+    Frete        float,
+    Total        float
 );
-CREATE TABLE 
->>>>>>> a2013f15cdca4dd209e2d843dd41fceee343158f
+ALTER TABLE Cadastro_pedido AUTO_INCREMENT = 1000;
+
+SELECT * FROM Cadastro_Pets;
+SELECT * FROM Cadastro_Produtos_Pets;
+SELECT * FROM Cadastro_pedido;
