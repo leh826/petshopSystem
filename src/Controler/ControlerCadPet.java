@@ -189,16 +189,7 @@ public class ControlerCadPet {
             
             
         }else{
-            /*
-            CadastroPetDAO bd = new CadastroPetDAO();
-            
-            bd.insetCadastrosPet(getNomePet(), getEspecie(), getRaca(), getSexo(), getIdade(), getCor(), getPeso(), getCaracteristicas());
-            bd.insertInfoSaudePet(getHistorico_vacinacao(), getMedicametos_uso(), getAlergias(), getHist_doencas_cond_medicas());
-            bd.insertInfoTutor(getNomeTutor(), getContato(), getNum_cpf(), getEndereco());
-            
-            bd.desconnectBD();*/
-            
-            
+                        
             return false;
         }
         

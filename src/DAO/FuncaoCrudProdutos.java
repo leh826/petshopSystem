@@ -96,4 +96,17 @@ public class FuncaoCrudProdutos {
         }
      return dados;
     }
+    public boolean existsById(int id) {
+    
+    try (Connection conexao = ConnectionPetDAO.getConnection();) {
+        String sql = "SELECT * FROM pets WHERE id = ?";
+        PreparedStatement statement = conexao.prepareStatement(sql);
+        statement.setInt(1, id);
+        ResultSet resultSet = statement.executeQuery();
+        return resultSet.next(); // Retorna true se um registro foi encontrado, false caso contrário
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return false; // Retorna false se ocorrer um erro
+}
 }

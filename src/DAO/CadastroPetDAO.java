@@ -15,7 +15,7 @@ public class CadastroPetDAO {
     public CadastroPetDAO() throws SQLException {
         this.ConnectionPetDAO = new ConnectionPetDAO();
     }
-    
+ 
     public boolean insetCadastrosPet(String nomePet, String especie, String raca, String sexo, String idade, String cor, String peso, String caracteristicas, String nomeTutor, String contato, String num_cpf, String endereco, String historico_vacinacao, String medicamentos_uso, String alergias, String hist_doencas_cond_medicas){
        
         String sql = "INSERT INTO Cadastro_Pets(nomePet, especie, raca, sexo, idade, cor, peso, caracteristicas, nomeTutor, contato, num_cpf, endereco, historico_vacinacao, medicamentos_uso, alergias, hist_doencas_cond_medicas) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -131,7 +131,22 @@ public class CadastroPetDAO {
             
             return false;
         }
+    } 
+    
+    public boolean existsById(int id) {
+    
+    try (Connection conexao = ConnectionPetDAO.getConnection();) {
+        String sql = "SELECT * FROM pets WHERE id = ?";
+        PreparedStatement statement = conexao.prepareStatement(sql);
+        statement.setInt(1, id);
+        ResultSet resultSet = statement.executeQuery();
+        return resultSet.next(); // Retorna true se um registro foi encontrado, false caso contrário
+    } catch (SQLException e) {
+        e.printStackTrace();
     }
+    return false; // Retorna false se ocorrer um erro
+}
+
     /*
     public boolean selectFilterCadastros(String filtro, String valor){
         List<String> validColumns = Arrays.asList("nomePet", "caracteristicas", "nomeTutor", "endereco");
