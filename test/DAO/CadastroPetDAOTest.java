@@ -48,7 +48,7 @@ public class CadastroPetDAOTest {
         pet.setHist_doencas_cond_medicas("teste"); 
        petDao.insetCadastrosPet(pet.getNomePet(), pet.getEspecie(), pet.getRaca(), pet.getSexo(), pet.getIdade(), pet.getCor(), pet.getPeso(), pet.getCaracteristicas(), pet.getNomeTutor(), pet.getContato(), pet.getNum_cpf(), pet.getEndereco(), pet.getHistorico_vacinacao(), pet.getMedicamentos_uso(), pet.getAlergias(), pet.getHist_doencas_cond_medicas());
        
-       assert (pet.equals(pet));
+       assert (pet.equals(pet)== true);
 
     }
 
@@ -61,7 +61,7 @@ public class CadastroPetDAOTest {
         ModeloTabelaPets pet = new ModeloTabelaPets();
         pet.setNomePet("BACKEND");
         petDao.alterCadastros(pet.getNomePet(), pet.getNomePet(), 1);
-        assert (pet.equals(pet)); //Se for true que dizer que o objeto foi alterado no banco de acordo com os sets acima
+        assert (pet.equals(pet)); 
     }
 
     /**
